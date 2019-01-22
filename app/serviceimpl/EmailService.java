@@ -185,7 +185,7 @@ public class EmailService implements IEmailService {
 
     @Override
     public Email replyToEmail(Long id, User user, String subject, String body) {
-        UserEmail userEmail = findUserEmail.query().where().eq("userEmail.email", user.email).eq("email.id", id).findUnique();
+        UserEmail userEmail = findUserEmail.byId(id);
         if (userEmail != null ) {
             String from = user.email;
             List<String> to = new ArrayList<>();
