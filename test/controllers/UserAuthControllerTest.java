@@ -21,10 +21,11 @@ public class UserAuthControllerTest extends WithApplication {
     private static final String name = "Prabal";
     private static User user;
 
-    /*@Before
+    @Before
     public void setUp() {
         start(fakeApplication(inMemoryDatabase()));
-        user = User.create(email, name, password);
+        user = new User(email, name, password);
+        user.save();
     }
 
     @Test
@@ -43,7 +44,7 @@ public class UserAuthControllerTest extends WithApplication {
     @Test
     public void loginWithBadPassword() {
         ObjectNode loginJson = Json.newObject();
-        loginJson.put("emailAddress", email);
+        loginJson.put("email", email);
         loginJson.put("password", "wrong");
 
         Result result = route(fakeRequest(routes.UserAuthController.login()).bodyJson(loginJson));
@@ -54,12 +55,12 @@ public class UserAuthControllerTest extends WithApplication {
     @Test
     public void loginWithBadUsername() {
         ObjectNode loginJson = Json.newObject();
-        loginJson.put("emailAddress", "email");
+        loginJson.put("email", "email");
         loginJson.put("password", password);
 
         Result result = route(fakeRequest(routes.UserAuthController.login()).bodyJson(loginJson));
 
-        assertEquals(UNAUTHORIZED, result.status());
+        assertEquals(BAD_REQUEST, result.status());
     }
 
     @Test
@@ -69,6 +70,6 @@ public class UserAuthControllerTest extends WithApplication {
         Result result = route(fakeRequest(routes.UserAuthController.logout()).header(AUTH_TOKEN_HEADER_KEY, authToken));
 
         assertEquals(SEE_OTHER, result.status());
-    }*/
+    }
 
 }
