@@ -37,6 +37,10 @@ public class EmailService implements IEmailService {
             throw new IllegalArgumentException("Wrong recipient email list "+ to);
         }
 
+        if (toUsers.isEmpty()) {
+            throw new IllegalArgumentException("Wrong recipient email list "+ to);
+        }
+
         if (subject == null || subject.length()==0) {
             throw new IllegalArgumentException("Subject cannot be empty");
         }
