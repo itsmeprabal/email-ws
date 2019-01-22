@@ -8,12 +8,13 @@ This is a sample Web Server project for an Email application. Supports limited s
 5. Delete Draft 
 6. Send Email
 7. Delete Email
-8. Fetch Inbox
-9. Fetch unread Inbox
-10. Mark Email as Read
-11. Fetch Sent
-12. Fetch Drafts
-13. Fetch Trash 
+8. Reply Email
+9. Fetch Inbox
+10. Fetch unread Inbox
+11. Mark Email as Read
+12. Fetch Sent
+13. Fetch Drafts
+14. Fetch Trash 
  
 Basic O-auth2 authentication is supported. Fetch APIs are paginated.
  
