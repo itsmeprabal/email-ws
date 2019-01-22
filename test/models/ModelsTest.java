@@ -3,6 +3,9 @@ package models;
 import org.junit.Before;
 import org.junit.Test;
 import play.test.WithApplication;
+import serviceimpl.EmailService;
+import serviceimpl.UserService;
+import utils.Utility;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -16,25 +19,28 @@ public class ModelsTest extends WithApplication {
     private static final String password = "password";
     private static final String name = "Prabal";
     private static User user;
+    private static UserService userService;
+    private static EmailService emailService;
 
-    /*@Before
+    @Before
     public void setUp() {
         start(fakeApplication(inMemoryDatabase()));
-        user = User.create(email, name, password);
+        userService = new UserService();
+        user = userService.createNew(email, name, password);
+        emailService = new EmailService(userService);
     }
 
     @Test
-    public void testCreate() {
+    public void userCreateAndFetchTest() {
         User user = new User("foo@foo.com","John Doe", "password");
         user.save();
         assertNotNull(user.email);
         assertEquals("John Doe", user.name);
 
         try {
-            // check the private shaPassword
             Field field = User.class.getDeclaredField("shaPassword");
             field.setAccessible(true);
-            assertArrayEquals(User.getSha512("password"), (byte[])field.get(user));
+            assertArrayEquals(Utility.getSha512("password"), (byte[])field.get(user));
             assertEquals(64, ((byte[])field.get(user)).length); // 512 bits = 64 bytes
         } catch (NoSuchFieldException | IllegalAccessException e) {
             throw new RuntimeException(e);
@@ -42,55 +48,37 @@ public class ModelsTest extends WithApplication {
     }
 
     @Test
-    public void userCreateAndFetchTest() {
-        User pc = User.find.query().where().eq("email", email).findUnique();
-        assertNotNull(pc);
-        assertEquals(name, pc.name);
-    }
-
-    @Test
     public void authenticateUserTest() {
-        assertNotNull(User.authenticate(email, password));
-        assertNull(User.authenticate(email, "wrong"));
-        assertNull(User.authenticate("pc@gmail.com", password));
+        assertNotNull(userService.authenticate(email, password));
+        assertEquals(userService.authenticate(email, password).email, email);
+        assertNull(userService.authenticate(email, "wrong"));
+        assertNull(userService.authenticate("pc@gmail.com", password));
     }
 
     @Test
     public void findEmailBySenderTest() {
-        User.create("xyz@gmail.com", "XYZ", "xxyyzz");
+        User receiver = userService.createNew("xyz@gmail.com", "XYZ", "xxyyzz");
 
         List<String> rec = new ArrayList<>();
-        rec.add("xyz@gmail.com");
-        Email.create(email, rec, "subj1", "email send out to someone");
-        rec.add(email);
-        Email.create(email, rec, "subj2", "email sent out to someone and myself");
+        rec.add(receiver.email);
+        emailService.send(user.email, rec, "subject1", "email send out to someone");
 
-        List<Email> sentByMe = Email.findBySender(email);
+        rec.add(email);
+        emailService.send(user.email, rec, "subject2", "email sent out to someone and myself");
+
+        List<Email> sentByMe = emailService.findBySender(user.email, 1);
         assertEquals(2, sentByMe.size());
     }
 
     @Test
     public void findEmailsByRecepientTest1() {
-        new User("xyz@gmail.com", "XYZ", "xxyyzz").save();
+        User receiver = userService.createNew("xyz@gmail.com", "XYZ", "xxyyzz");
 
         List<String> rec = new ArrayList<>();
-        rec.add("xyz@gmail.com");
-        Email.create(email, rec, "subj1", "email send out to someone");
+        rec.add(receiver.email);
+        emailService.send(user.email, rec, "subj1", "email send out to someone");
 
-        List<Email> recvcByOther = Email.findByRecepient("xyz@gmail.com");
+        List<UserEmail> recvcByOther = emailService.findByRecepient(receiver.email, 1);
         assertEquals(1, recvcByOther.size());
     }
-
-    @Test
-    public void findEmailsByRecepientTest2() {
-        new User("xyz@gmail.com", "XYZ", "xxyyzz").save();
-
-        List<String> rec = new ArrayList<>();
-        rec.add("xyz@gmail.com");
-        rec.add(email);
-        Email.create(email, rec, "subj1", "email send out to someone and myself");
-
-        List<Email> recvdByMe = Email.findByRecepient(email);
-        assertEquals(1, recvdByMe.size());
-    }*/
 }

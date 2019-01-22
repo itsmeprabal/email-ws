@@ -11,12 +11,17 @@ import java.util.*;
 import static utils.Constants.EMAILS_PER_PAGE;
 
 public class EmailService implements IEmailService {
-    @Inject
+    //@Inject
     IUserService userService;
 
     private static Finder<Long, Email> findEmail = new Finder(Email.class);
     private static Finder<Long, Draft> findDraft = new Finder<>(Draft.class);
     private static Finder<Long, UserEmail> findUserEmail = new Finder<>(UserEmail.class);
+
+    @Inject
+    public EmailService(IUserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public Email send(String from, List<String> to, String subject, String body) {
