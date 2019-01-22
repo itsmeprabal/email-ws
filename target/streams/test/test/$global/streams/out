@@ -1,0 +1,52 @@
+[0m[[0m[0mdebug[0m] [0m[0mjavaOptions: Vector()[0m
+[0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunner for com.novocode.junit.JUnitFramework produced 3 initial tasks for 3 tests.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(models.ModelsTest, sbt.ForkMain$AnnotatedFingerscan@a67af8c, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest models.[33mModelsTest[0m.[36muserCreateAndFetchTest[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest models.[33mModelsTest[0m.[36muserCreateAndFetchTest[0m finished, took 3.964 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest models.[33mModelsTest[0m.[36mauthenticateUserTest[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest models.[33mModelsTest[0m.[36mauthenticateUserTest[0m finished, took 0.464 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest models.[33mModelsTest[0m.[36mfindEmailsByRecepientTest1[0m started[0m
+[0m[[0m[31merror[0m] [0m[0mTest models.[33mModelsTest[0m.[31mfindEmailsByRecepientTest1[0m failed: expected:<1> but was:<0>, took 0.42 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest models.[33mModelsTest[0m.[36mfindEmailsByRecepientTest1[0m finished, took 0.42 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest models.[33mModelsTest[0m.[36mfindEmailsByRecepientTest2[0m started[0m
+[0m[[0m[31merror[0m] [0m[0mTest models.[33mModelsTest[0m.[31mfindEmailsByRecepientTest2[0m failed: expected:<1> but was:<0>, took 0.318 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest models.[33mModelsTest[0m.[36mfindEmailsByRecepientTest2[0m finished, took 0.319 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest models.[33mModelsTest[0m.[36mtestCreate[0m started[0m
+[0m[[0m[31merror[0m] [0m[0mTest models.[33mModelsTest[0m.[31mtestCreate[0m failed: expected:<[John Doe]> but was:<[password]>, took 0.358 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest models.[33mModelsTest[0m.[36mtestCreate[0m finished, took 0.359 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest models.[33mModelsTest[0m.[36mfindEmailBySenderTest[0m started[0m
+[0m[[0m[31merror[0m] [0m[0mTest models.[33mModelsTest[0m.[31mfindEmailBySenderTest[0m failed: expected:<2> but was:<0>, took 0.376 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest models.[33mModelsTest[0m.[36mfindEmailBySenderTest[0m finished, took 0.377 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[31m4 failed[0m[34m, [0m[34m0 ignored[0m[34m, 6 total, 5.909s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 6 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.HomeControllerTest, sbt.ForkMain$AnnotatedFingerscan@1393cf45, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest controllers.[33mHomeControllerTest[0m.[36mtestIndex[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest controllers.[33mHomeControllerTest[0m.[36mtestIndex[0m finished, took 0.58 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 1 total, 0.58s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 1 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.UserAuthControllerTest, sbt.ForkMain$AnnotatedFingerscan@2e683fbb, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest controllers.[33mUserAuthControllerTest[0m.[36mloginWithBadPassword[0m started[0m
+[0m[[0m[31merror[0m] [0m[0mTest controllers.[33mUserAuthControllerTest[0m.[31mloginWithBadPassword[0m failed: expected:<401> but was:<400>, took 0.697 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest controllers.[33mUserAuthControllerTest[0m.[36mloginWithBadPassword[0m finished, took 0.697 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest controllers.[33mUserAuthControllerTest[0m.[36mlogout[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest controllers.[33mUserAuthControllerTest[0m.[36mlogout[0m finished, took 0.358 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest controllers.[33mUserAuthControllerTest[0m.[36mlogin[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest controllers.[33mUserAuthControllerTest[0m.[36mlogin[0m finished, took 0.449 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest controllers.[33mUserAuthControllerTest[0m.[36mloginWithBadUsername[0m started[0m
+[0m[[0m[31merror[0m] [0m[0mTest controllers.[33mUserAuthControllerTest[0m.[31mloginWithBadUsername[0m failed: expected:<401> but was:<400>, took 0.265 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest controllers.[33mUserAuthControllerTest[0m.[36mloginWithBadUsername[0m finished, took 0.265 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[31m2 failed[0m[34m, [0m[34m0 ignored[0m[34m, 4 total, 1.772s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 4 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0mSummary for JUnit not available.[0m
+[0m[[0m[31merror[0m] [0m[0mFailed: Total 11, Failed 6, Errors 0, Passed 5[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	controllers.HomeControllerTest[0m
+[0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
+[0m[[0m[31merror[0m] [0m[0m	models.ModelsTest[0m
+[0m[[0m[31merror[0m] [0m[0m	controllers.UserAuthControllerTest[0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m

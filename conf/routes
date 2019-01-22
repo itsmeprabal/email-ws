@@ -1,0 +1,28 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+PUT     /users/create                                       controllers.UserController.createUser()
+
+POST    /login                                              controllers.UserAuthController.login()
+POST    /logout                                             controllers.UserAuthController.logout()
+
+POST    /emails/send                                        controllers.EmailController.send()
+POST    /emails/saveDraft                                   controllers.EmailController.saveDraft()
+POST    /emails/markAsRead                                  controllers.EmailController.markAsRead()
+POST    /emails/deleteEmail                                 controllers.EmailController.deleteEmail()
+
+DELETE  /emails/deleteDraft                                 controllers.EmailController.deleteDraft()
+
+GET     /emails/inbox/all/user/:email/page/:pageCount       controllers.EmailController.inbox(email:String, pageCount:Integer)
+GET     /emails/inbox/unread/user/:email/page/:pageCount    controllers.EmailController.inboxUnread(email:String, pageCount:Integer)
+GET     /emails/sent/user/:email/page/:pageCount            controllers.EmailController.sent(email:String, pageCount:Integer)
+GET     /emails/trash/user/:email/page/:pageCount           controllers.EmailController.trash(email:String, pageCount:Integer)
+
+GET     /emails/drafts/user/:email/page/:pageCount          controllers.EmailController.drafts(email:String, pageCount:Integer)
