@@ -1,4 +1,0 @@
-[0m[[0m[0minfo[0m] [0m[0m/Users/prabal/Workspace/codebase/java/play-email/email-ws/app/controllers/UserAuthenticator.java: /Users/prabal/Workspace/codebase/java/play-email/email-ws/app/controllers/UserAuthenticator.java uses or overrides a deprecated API.[0m
-[0m[[0m[0minfo[0m] [0m[0m/Users/prabal/Workspace/codebase/java/play-email/email-ws/app/controllers/UserAuthenticator.java: Recompile with -Xlint:deprecation for details.[0m
-[0m[[0m[0minfo[0m] [0m[0m/Users/prabal/Workspace/codebase/java/play-email/email-ws/app/utils/Utility.java: Some input files use unchecked or unsafe operations.[0m
-[0m[[0m[0minfo[0m] [0m[0m/Users/prabal/Workspace/codebase/java/play-email/email-ws/app/utils/Utility.java: Recompile with -Xlint:unchecked for details.[0m
