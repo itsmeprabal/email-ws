@@ -16,4 +16,5 @@ public class Constants {
 
     public static final String EMAIL_ID_KEY = "emailId";
     public static final String DRAFT_ID_KEY = "draftId";
+    public static final String USER_EMAIL_ID_KEY = "userEmailId";
 }

@@ -19,6 +19,7 @@ create table emails (
   from_email                    varchar(256),
   subject                       varchar(255),
   body                          longtext,
+  parent_email                  bigint,
   updated_at                    datetime(6),
   created_at                    datetime(6),
   constraint pk_emails primary key (id)
@@ -58,6 +59,9 @@ create index ix_drafts_from_email on drafts (from_email);
 alter table emails add constraint fk_emails_from_email foreign key (from_email) references users (email) on delete restrict on update restrict;
 create index ix_emails_from_email on emails (from_email);
 
+alter table emails add constraint fk_emails_parent_email foreign key (parent_email) references emails (id) on delete restrict on update restrict;
+create index ix_emails_parent_email on emails (parent_email);
+
 alter table emails_users add constraint fk_emails_users_emails foreign key (emails_id) references emails (id) on delete restrict on update restrict;
 create index ix_emails_users_emails on emails_users (emails_id);
 
@@ -78,6 +82,9 @@ drop index ix_drafts_from_email on drafts;
 
 alter table emails drop foreign key fk_emails_from_email;
 drop index ix_emails_from_email on emails;
+
+alter table emails drop foreign key fk_emails_parent_email;
+drop index ix_emails_parent_email on emails;
 
 alter table emails_users drop foreign key fk_emails_users_emails;
 drop index ix_emails_users_emails on emails_users;

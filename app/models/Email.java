@@ -32,6 +32,10 @@ public class Email extends Model {
     @Constraints.Required
     public String body;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "parent_email", referencedColumnName = "id")
+    public Email parentEmail;
+
     @Temporal(TemporalType.TIMESTAMP)
     public Date updatedAt;
 

@@ -178,4 +178,22 @@ public class EmailService implements IEmailService {
         }
         return false;
     }
+
+    @Override
+    public Email replyToEmail(Long id, User user, String subject, String body) {
+        UserEmail userEmail = findUserEmail.query().where().eq("userEmail.email", user.email).eq("email.id", id).findUnique();
+        if (userEmail != null ) {
+            String from = user.email;
+            List<String> to = new ArrayList<>();
+            to.add(userEmail.email.fromEmail.email);
+            if (subject == null) {
+                subject = "Re:" +userEmail.email.subject;
+            }
+            Email replyMail = this.send(from, to, subject, body);
+            replyMail.parentEmail = userEmail.email;
+            replyMail.save();
+            return replyMail;
+        }
+        return null;
+    }
 }

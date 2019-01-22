@@ -18,6 +18,7 @@ public interface IEmailService {
     Boolean markAsRead(Long emailId, User user);
     Email send(String from, List<String> to, String subject, String body);
     Boolean deleteEmail(Long id, User user);
+    Email replyToEmail(Long id, User user, String subject, String body);
 
     List<Email> findBySender(String email, Integer pageCount);
     List<UserEmail> findByRecepient(String email, Integer pageCount);

@@ -17,6 +17,7 @@ POST    /emails/send                                        controllers.EmailCon
 POST    /emails/saveDraft                                   controllers.EmailController.saveDraft()
 POST    /emails/markAsRead                                  controllers.EmailController.markAsRead()
 POST    /emails/deleteEmail                                 controllers.EmailController.deleteEmail()
+POST    /emails/replyToEmail                                controllers.EmailController.replyToEmail()
 
 DELETE  /emails/deleteDraft                                 controllers.EmailController.deleteDraft()
 

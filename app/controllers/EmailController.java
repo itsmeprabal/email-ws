@@ -136,7 +136,25 @@ public class EmailController extends Controller {
         }
 
         if (emailService.deleteEmail(emailId, UserAuthController.getUser()))
-            return ok("Draft deleted");
-        return badRequest("Could not find Draft to delete");
+            return ok("Email deleted");
+        return badRequest("Could not find Email to delete");
+    }
+
+    public Result replyToEmail() {
+        Map<String, String> queryParams = Utility.getQueryParamsMapFromJsonBody(request());
+        Long userEmailId = null;
+        try {
+            userEmailId = Long.parseLong(queryParams.get(USER_EMAIL_ID_KEY));
+        } catch (Exception e) {
+            return badRequest("Couldn't find user email ID to reply to");
+        }
+
+        String subject = queryParams.get(EMAIL_SUBJECT_KEY);    //could be null
+        String body = queryParams.get(EMAIL_BODY_KEY);
+        Email replyEmail = emailService.replyToEmail(userEmailId, UserAuthController.getUser(), subject, body);
+        if (replyEmail != null) {
+            return ok(Json.toJson(replyEmail));
+        }
+        return badRequest("Could not find email to reply to");
     }
 }
